@@ -1,4 +1,4 @@
-let userInput = Number(prompt("Please enter your number", ""));
+const userInput = Number(prompt("Please enter your number", ""));
 
 let isItPrime = true;
 

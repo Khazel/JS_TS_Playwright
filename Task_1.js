@@ -1,7 +1,7 @@
-let inputValue = prompt("Please enter your number", "");
-let hours = Math.floor(inputValue / 60);
-let wholeHoursInMinutes = hours * 60;
-let minutes = inputValue - wholeHoursInMinutes;
+const inputValue = prompt("Please enter your number", "");
+const hours = Math.floor(inputValue / 60);
+const wholeHoursInMinutes = hours * 60;
+const minutes = inputValue - wholeHoursInMinutes;
 let result = ``;
 
 if ((minutes >= 0) && (minutes < 10))

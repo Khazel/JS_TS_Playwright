@@ -1,4 +1,4 @@
-let score = Number(prompt("Please enter your score", ""));
+const score = Number(prompt("Please enter your score", ""));
 
 if ((score >= 0) && (score <= 49))
 {

@@ -1,10 +1,10 @@
-let firstNumber = prompt("Please enter your first number", "");
-let secondNumber = prompt("Please enter your second number", "");
+const firstNumber = prompt("Please enter your first number", "");
+const secondNumber = prompt("Please enter your second number", "");
 
-let sum = Number(firstNumber) + Number(secondNumber);
+const sum = Number(firstNumber) + Number(secondNumber);
 let diff = firstNumber - secondNumber;
-let product = firstNumber * secondNumber;
-let quotient = firstNumber / secondNumber;
+const product = firstNumber * secondNumber;
+const quotient = firstNumber / secondNumber;
 
 if (diff < 0)
 {
