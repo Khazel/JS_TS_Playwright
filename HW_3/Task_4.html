@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const newArticle = document.createElement('article');
+        newArticle.classList.add('article', 'postList');
+
+        const newDiv = document.createElement('div');
+        newDiv.id = "container";
+        
+        const post1 = document.createElement('p');
+        post1.innerHTML = "Post 1";
+
+        const post2 = document.createElement('p');
+        post2.innerHTML = "Post 2";
+
+        const post3 = document.createElement('p');
+        post3.innerHTML = "Post 3";
+
+        document.body.prepend(newArticle);
+
+        newArticle.append(newDiv);
+
+        newDiv.append(post1, post2, post3) 
+    </script>
+</body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <section>
+        <h2 class="header">Header</h2>
+        <p id ='data'>DOM - document object model </p>
+        <span>Span</span>
+        <div>Invisible element</div>
+    </section>
+    <button id="btn">Add style</button>
+    <script>
+        const button = document.getElementById("btn");
+        const h2Element = document.querySelector("h2");
+        const pElement = document.getElementById("data");
+        const spanElement = document.querySelector("span");
+        const divElement = document.querySelector("div");
+
+        function eventHandler(event)
+        {
+            h2Element.style.color = "red";
+            h2Element.style.textDecoration = "underline";
+
+            pElement.style.color = "brown";
+            pElement.style.fontSize = "18px";
+            pElement.style.fontFamily = "Comic Sans MS";
+
+            spanElement.style.color = "green";
+            spanElement.style.fontStyle = "italic";
+
+            divElement.style.color = "white";
+        }
+        button.addEventListener('click', eventHandler);
+    </script>
+</body>
+</html>
