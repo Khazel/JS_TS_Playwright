@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        const inputField = document.createElement('textarea');
+        inputField.type = 'text';
+        inputField.placeholder = 'Write message...';
+        inputField.style.resize = 'none';
+        inputField.id = 'textInput';
+        inputField.style.width = '600px';
+        inputField.style.height = '230px';
+        document.body.append(inputField);
+        var style = document.createElement("style");
+        style.innerHTML = `
+        input[type="text"]::placeholder {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 16px;
+        }`;
+        document.head.append(style);
+
+        const sendButton = document.createElement('button');
+        sendButton.type = 'button';
+        sendButton.textContent = 'Send';
+        sendButton.id = 'sendButton';
+        sendButton.style.width = '100px';
+        sendButton.style.position = 'absolute';
+        sendButton.style.left = '650px';
+        sendButton.style.top = '223px';
+        document.body.append(sendButton);
+
+        const outputArea = document.createElement('div');
+        outputArea.id = 'outputArea';
+        outputArea.style.position = 'relative';
+        outputArea.style.width = '770px';
+        document.body.prepend(outputArea);
+
+        const timeStampArea = document.createElement('div');
+        timeStampArea.id = 'timestamp';
+        timeStampArea.style.position = 'relative';
+        timeStampArea.style.left = '615px';
+        outputArea.after(timeStampArea);
+
+        let enteredText = "";
+
+        sendButton.addEventListener('click', function() {
+            enteredText = inputField.value;
+            const newMessage = document.createElement('div');
+            newMessage.textContent = enteredText;
+            outputArea.append(newMessage);
+            
+            let date = new Date();
+            let readableDateTime = date.toLocaleString();
+            const timestamp = document.createElement('div');
+            timestamp.textContent = readableDateTime;
+            timestamp.style.textAlign = 'right';
+            outputArea.append(timestamp);
+
+            const separator = document.createElement('hr');
+            outputArea.append(separator);
+
+            inputField.value = '';
+        })
+
+        sendButton.addEventListener('click', function() {
+            let inputFieldPosition = inputField.getBoundingClientRect();
+            sendButton.style.top = (inputFieldPosition.top + 216) + "px";
+            sendButton.style.left = (inputFieldPosition.left + 650) + "px";
+        })
+    </script>
+</body>
+</html>

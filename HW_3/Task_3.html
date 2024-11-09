@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <button id="btn">Live button!</button>
+    <div id="messages"></div>
+    <script>
+        const buttonElement = document.getElementById("btn");
+        const messagesDiv = document.getElementById("messages");
+
+        function clickHandler(event)
+        {
+            const message = document.createElement('div');
+            message.innerHTML = `I was pressed!`;
+            messagesDiv.append(message);
+        }
+
+        function mouseEnterHandler(event)
+        {
+            const message = document.createElement('div');
+            message.innerHTML = `Mouse on me!`;
+            messagesDiv.append(message);
+        }
+
+        function mouseLeaveHandler(event)
+        {
+            const message = document.createElement('div');
+            message.innerHTML = `Mouse is not on me!`;
+            messagesDiv.append(message);
+        }
+
+        buttonElement.addEventListener("click", clickHandler);
+        buttonElement.addEventListener("mouseenter", mouseEnterHandler);
+        buttonElement.addEventListener("mouseleave", mouseLeaveHandler);
+    </script>
+</body>
+</html>
