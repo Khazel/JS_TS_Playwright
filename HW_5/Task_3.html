@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dynamic Form Creation</title>
+</head>
+<body>
+    <h1>Login</h1>
+    <div id="form-container"></div>
+
+    <script>
+        function createForm(formId, actionUrl) {
+            
+            const form = document.createElement('form');
+            form.setAttribute('id', formId);
+            form.setAttribute('action', actionUrl);
+            form.setAttribute('method', 'POST');
+            
+            const usernameInput = document.createElement('input');
+            usernameInput.setAttribute('type', 'text');
+            usernameInput.setAttribute('name', 'username');
+            usernameInput.setAttribute('placeholder', 'Username');
+            form.append(usernameInput);
+            
+            const passwordInput = document.createElement('input');
+            passwordInput.setAttribute('type', 'password');
+            passwordInput.setAttribute('name', 'password');
+            passwordInput.setAttribute('placeholder', 'Password');
+            form.append(passwordInput);
+            
+            const loginButton = document.createElement('button');
+            loginButton.setAttribute('type', 'button');
+            loginButton.textContent = 'Login';
+            form.append(loginButton);
+
+            loginButton.addEventListener('click', function(event) {
+                event.preventDefault();
+                let userCredentials = {
+                    username: usernameInput.value,
+                    password: passwordInput.value
+                };
+
+                checkLogin(userCredentials.username, userCredentials.password)
+                .then((message) => alert(message))
+                .catch((error) => alert(error));
+            });
+
+            document.getElementById('form-container').append(form);
+        }
+
+        function checkLogin(username, password) {
+            return new Promise(
+                function (resolve, reject) {
+                    setTimeout(function () {
+                        if (username === 'admin' && password === "qwerty123456") {
+                        const message = `Welcome, ${username}!`;
+                        resolve(message);
+                        } else {
+                        const error = new Error('Invalid username or password!');
+                        reject(error);
+                        }
+                    }, 2000);
+                });
+        }
+
+        createForm('form1', '/submit-form1');
+    </script>
+</body>
+</html>
