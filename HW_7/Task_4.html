@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <h2 class="header">Email list</h2>
+    <button id="btn">Get emails</button>
+    <div id="emails"></div>
+    <script>
+        const buttonElement = document.getElementById("btn");
+        const emailsDiv = document.getElementById("emails");
+
+        function getEmails(event)
+        {
+            emailsDiv.innerHTML = '';
+            fetch('https://fakestoreapi.com/users')
+            .then(response => response.json())
+            .then(data => {
+                const emailsList = document.createElement('ul');
+
+                data.forEach(user => {
+                    const listItem = document.createElement('li');
+                    listItem.textContent = user.email;
+                    emailsList.append(listItem);
+                });
+
+                emailsDiv.append(emailsList);
+            })
+            .catch(error => {
+                console.error('Error fetching data:', error);
+                emailsDiv.textContent = 'Failed to load emails.';
+            });
+        }
+
+        buttonElement.addEventListener("click", getEmails);
+    </script>
+</body>
+</html>
