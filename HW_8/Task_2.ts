@@ -1,4 +1,4 @@
-function processData(param: string | number | boolean | number[]) {
+function processData(param: string | number | boolean | number[]): string | number | boolean | number[] {
     if (typeof param === "string") {
         return param.toUpperCase();
     }
@@ -8,7 +8,7 @@ function processData(param: string | number | boolean | number[]) {
     else if (typeof param === "boolean") {
         return param ? false : true;
     }
-    else if (Array.isArray(param) && param.every(elemen => typeof elemen === "number")) {
+    else if (Array.isArray(param) && param.every(element => typeof element === "number")) {
         if (param.length === 0) {
             return "Empty array: []";
         }
@@ -19,6 +19,7 @@ function processData(param: string | number | boolean | number[]) {
             return param;
         }
     }
+    throw new Error("Unsupported type");
 };
 
 console.log(processData("text data"));

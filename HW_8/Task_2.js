@@ -8,7 +8,7 @@ function processData(param) {
     else if (typeof param === "boolean") {
         return param ? false : true;
     }
-    else if (Array.isArray(param) && param.every(function (elemen) { return typeof elemen === "number"; })) {
+    else if (Array.isArray(param) && param.every(function (element) { return typeof element === "number"; })) {
         if (param.length === 0) {
             return "Empty array: []";
         }
@@ -19,6 +19,7 @@ function processData(param) {
             return param;
         }
     }
+    throw new Error("Unsupported type");
 }
 ;
 console.log(processData("text data"));
